@@ -14,7 +14,11 @@ const client = new Client({
 client.connect()
 
 const app = express()
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3003
+
+app.get('/', async (req, res) => {
+  return res.json({ msg: "Hello!" })
+});
 
 app.get('/users', async (req, res) => {
   const result = await client.query('SELECT * FROM users;')
